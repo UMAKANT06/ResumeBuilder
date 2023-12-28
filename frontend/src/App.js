@@ -1,13 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
+import Home from'./components/Home';
+import Profile from './components/Profile';
+import { BrowserRouter as Router, Route, Switch,Routes } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Router>
+        <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Router>
+      {/* <Home/> */}
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit <code>src/App.js</code> and save to Reload.
         </p>
         <a
           className="App-link"
@@ -17,7 +27,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }
