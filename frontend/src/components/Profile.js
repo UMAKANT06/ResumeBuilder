@@ -2,158 +2,254 @@ import React, { useState } from "react";
 import { Box, Paper, Card, CardContent, TextField, Typography, Button } from "@mui/material";
 import NavBar from "./NavBar";
 import Resume from "./Resume";
+import ProfileResume from "./ProfileResume";
 
 const Profile = () => {
-  // Local state to store personal details
-  const [firstName, setFirstName] = useState("");
-  const [middleName, setMiddleName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [LinkedIn, setLinkedIn] = useState("");
-  const [GitHub, setGitHub] = useState("");
-  const [Instagram, setInstagram] = useState("");
-  const [Twitter, setTwitter] = useState("");
-  const [Location, setLocation] = useState("");
 
-
-  const [image, setImage] = useState(null);
-  // Function to handle form submission
   const handleSubmit = () => {
-    // You can save the values locally or use them in other components
-    console.log("First Name:", firstName);
-    console.log("Middle Name:", middleName);
-    console.log("Last Name:", lastName);
+
   };
 
-  const handleImageChange = (e) => {
-    const selectedImage = e.target.files[0];
-    setImage(selectedImage);
 
-    // You can also preview the image if needed
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const previewUrl = event.target.result;
-      // Do something with the previewUrl, such as displaying it in an <img> tag
-      console.log("Image Preview URL:", previewUrl);
-    };
-    reader.readAsDataURL(selectedImage);
+  const [values, setValues] = useState({
+    // Profile-Information
+    firstname: "john",
+    lastname: "Doe",
+    email: "john.doe@example.com",
+    phone: "123-456-7890",
+    website: "https://example.com",
+    github: "https://github.com/johndoe",
+    linkedin: "https://www.linkedin.com/in/johndoe",
+    twitter: "https://twitter.com/johndoe",
+    facebook: "https://www.facebook.com/johndoe",
+    instagram: "https://www.instagram.com/johndoe",
+
+    // Education Information
+    college: "University of Example",
+    fromyear1: "2010",
+    toyear1: "2014",
+    qualification1: "Bachelor's Degree",
+    description1: "Some description",
+    school: "High School Example",
+    fromyear2: "2006",
+    toyear2: "2010",
+    qualification2: "High School Diploma",
+    description2: "Some description",
+
+    // Project Information...
+    title1: "Project 1",
+    link1: "https://project1.example.com",
+    projectDescription1: "Description of Project 1",
+    title2: "Project 2",
+    link2: "https://project2.example.com",
+    projectDescription2: "Description of Project 2",
+    title3: "Project 3",
+    link3: "https://project3.example.com",
+    projectDescription3: "Description of Project 3",
+
+    // Experience Information
+    institute1: "Company 1",
+    position1: "Software Engineer",
+    duration1: "2 years",
+    experienceDescription1: "Worked on various projects...",
+    institute2: "Company 2",
+    position2: "Web Developer",
+    duration2: "1 year",
+    experienceDescription2: "Developed web applications...",
+
+    // Extra Information
+    skill1: "JavaScript",
+    skill2: "React",
+    skill3: "Node.js",
+    skill4: "HTML",
+    skill5: "CSS",
+    skill6: "Git",
+    interest1: "Reading",
+    interest2: "Traveling",
+    interest3: "Cooking",
+    interest4: "Music",
+    interest5: "Photography",
+    interest6: "Gaming",
+  });
+
+  const handleChange = (field, value) => {
+    setValues((prevValues) => ({
+      ...prevValues,
+      [field]: value,
+    }));
   };
+
+
+
 
   return (
     <>
       <NavBar />
       <div style={{
-                    background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
-                    fontFamily: "'Roboto Slab', serif",
-                }}>
-      <Box
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        minHeight="15vh"
-      >
-        <Paper
-          style={{
-            backgroundColor: '#4C667E',
-            color: "white",
-            padding: "10px",
-            maxWidth: 900,
-            width: "100%",
-            marginLeft: -900,
-            fontSize:20
-          }}
+        background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
+        fontFamily: "'Roboto Slab', serif",
+      }}>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
         >
-          PERSONAL DETAILS
-        </Paper>
-      </Box>
-      <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 50 }}>
-        <CardContent>
-          <Typography variant="h6" style={{ marginBottom: "10px",marginLeft:-700 }}>First Name</Typography>
-          <TextField
-            label="First Name"
-            variant="outlined"
-            style={{ marginBottom: "10px" ,width:800}}
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px",marginLeft:-700 }}>Phone</Typography>
-          <TextField
-            label="(123)456-789"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={middleName}
-            onChange={(e) => setMiddleName(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>Email</Typography>
-          <TextField
-            label="abc@gmail.com"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>LinkedIn</Typography>
-          <TextField
-            label="https://www.linkedin.com/in/"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={LinkedIn}
-            onChange={(e) => setLinkedIn(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>GitHub</Typography>
-          <TextField
-            label="https://GITHUB.com"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={GitHub}
-            onChange={(e) => setGitHub(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>Twitter</Typography>
-          <TextField
-            label="https://www.twitter.com/"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={Twitter}
-            onChange={(e) => setTwitter(e.target.value)}
-          />
-          {/* <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>Instagram</Typography>
-          <TextField
-            label="https://Instagaram.com"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={Instagram}
-            onChange={(e) => setInstagram(e.target.value)}
-          /> */}
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>Location</Typography>
-          <TextField
-            label="Delhi,India"
-            variant="outlined"
-            style={{ marginBottom: "10px",width:800 }}
-            value={Location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
-          <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft:-700}}>Image</Typography>
-          <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              style={{ marginBottom: "10px",marginLeft:-300 }}
-            />
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            PERSONAL DETAILS
+          </Paper>
+        </Box>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 50 }}>
+          <CardContent>
 
-          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Button variant="contained" color="error" onClick={handleSubmit} style={{marginLeft:100,marginTop:10}}>
-                Prev
-              </Button>
-              <Button variant="contained" color="error" onClick={handleSubmit} style={{marginRight:100,marginTop:10}}>
-                Next
-              </Button>
-            </Box>
-          
-        </CardContent>
-      </Card>
-      <Resume firstName={firstName} middleName={middleName} lastName={lastName}  image={image} Location={Location} LinkedIn={LinkedIn} GitHub={GitHub} Twitter={Twitter} />
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>First Name</Typography>
+                <TextField
+                  label="First Name"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.firstname}
+                  onChange={(e) => handleChange("firstname", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Last Name</Typography>
+                <TextField
+                  label="Last Name"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.lastname}
+                  onChange={(e) => handleChange("lastname", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Email</Typography>
+                <TextField
+                  label="Email"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.email}
+                  onChange={(e) => handleChange("email", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300 }}>Phone</Typography>
+                <TextField
+                  label="Phone"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.phone}
+                  onChange={(e) => handleChange("phone", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Website</Typography>
+                <TextField
+                  label="Website"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.website}
+                  onChange={(e) => handleChange("website", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>GitHub</Typography>
+                <TextField
+                  label="GitHub"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.github}
+                  onChange={(e) => handleChange("github", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300 }}>LinkedIn</Typography>
+                <TextField
+                  label="LinkedIn"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.linkedin}
+                  onChange={(e) => handleChange("linkedin", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>Twitter</Typography>
+                <TextField
+                  label="Twitter"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.twitter}
+                  onChange={(e) => handleChange("twitter", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300}}>Facebook</Typography>
+                <TextField
+                  label="Facebook"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.facebook}
+                  onChange={(e) => handleChange("facebook", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>Instagram</Typography>
+                <TextField
+                  label="Instagram"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.instagram}
+                  onChange={(e) => handleChange("instagram", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+          </CardContent>
+        </Card>
+        {/* <Resume firstName={values.firstname}/> */}
+        <ProfileResume values={values} />
       </div>
     </>
   );
 };
 
 export default Profile;
+
+

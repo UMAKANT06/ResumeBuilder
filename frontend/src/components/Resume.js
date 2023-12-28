@@ -27,7 +27,8 @@ const Resume = ({ firstName, middleName, lastName, image, Instagram, Twitter, Lo
   const generatePdf = async () => {
     const doc = new jsPDF();
 
-
+    // Convert image to base64
+    // const imgData = await getBase64Image(image);
 
     doc.text(`Name: ${firstName}`, 20, 20);
     doc.text(`Phone: ${middleName}`, 20, 30);
@@ -38,7 +39,7 @@ const Resume = ({ firstName, middleName, lastName, image, Instagram, Twitter, Lo
     doc.text(`Location: ${Location}`, 20, 80);
     doc.text(`Instagram: ${Instagram}`, 20, 90);
     doc.setLineWidth(0.6);
-    doc.rect(20, 120, 170, 30); 
+    doc.rect(20, 120, 170, 30); // Adjust the coordinates and size as needed
     doc.text("Education Details", 30, 135);
 
     doc.save("resume.pdf");
