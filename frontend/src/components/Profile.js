@@ -109,7 +109,7 @@ const Profile = () => {
             PERSONAL DETAILS
           </Paper>
         </Box>
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 50 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
           <CardContent>
 
 
@@ -157,7 +157,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300 }}>Phone</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Phone</Typography>
                 <TextField
                   label="Phone"
                   variant="outlined"
@@ -181,7 +181,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>GitHub</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>GitHub</Typography>
                 <TextField
                   label="GitHub"
                   variant="outlined"
@@ -194,7 +194,7 @@ const Profile = () => {
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300 }}>LinkedIn</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>LinkedIn</Typography>
                 <TextField
                   label="LinkedIn"
                   variant="outlined"
@@ -205,7 +205,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>Twitter</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Twitter</Typography>
                 <TextField
                   label="Twitter"
                   variant="outlined"
@@ -218,7 +218,7 @@ const Profile = () => {
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px",marginLeft: -300}}>Facebook</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Facebook</Typography>
                 <TextField
                   label="Facebook"
                   variant="outlined"
@@ -229,7 +229,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px" ,marginLeft: -300}}>Instagram</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Instagram</Typography>
                 <TextField
                   label="Instagram"
                   variant="outlined"
@@ -241,6 +241,621 @@ const Profile = () => {
             </div>
 
 
+          </CardContent>
+        </Card>
+
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            EDUCATIONAL DETAILS
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>College</Typography>
+                <TextField
+                  label="College"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.college}
+                  onChange={(e) => handleChange("college", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>From year</Typography>
+                <TextField
+                  label="From year1"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.fromyear1}
+                  onChange={(e) => handleChange("fromyear1", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>To Year</Typography>
+                <TextField
+                  label="To year1"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.toyear1}
+                  onChange={(e) => handleChange("toyear1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Qualification</Typography>
+                <TextField
+                  label="Qualification"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.qualification1}
+                  onChange={(e) => handleChange("qualification1", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Description</Typography>
+                <TextField
+                  label="Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.description1}
+                  onChange={(e) => handleChange("description1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>School</Typography>
+                <TextField
+                  label="School"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.school}
+                  onChange={(e) => handleChange("school", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>From Year</Typography>
+                <TextField
+                  label="From Year"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.fromyear2}
+                  onChange={(e) => handleChange("fromyear2", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>To Year</Typography>
+                <TextField
+                  label="To Year"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.toyear2}
+                  onChange={(e) => handleChange("toyear2", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Qualification</Typography>
+                <TextField
+                  label="Qualification"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.qualification2}
+                  onChange={(e) => handleChange("qualification2", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Description</Typography>
+                <TextField
+                  label="Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.description2}
+                  onChange={(e) => handleChange("description2", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+          </CardContent>
+        </Card>
+
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            EXTRA DETAILS
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill1</Typography>
+                <TextField
+                  label="Skill1"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill1}
+                  onChange={(e) => handleChange("skill1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill2</Typography>
+                <TextField
+                  label="Skill2"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill2}
+                  onChange={(e) => handleChange("skill2", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill3</Typography>
+                <TextField
+                  label="Skill3"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill3}
+                  onChange={(e) => handleChange("skill3", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill4</Typography>
+                <TextField
+                  label="Skill4"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill4}
+                  onChange={(e) => handleChange("skill4", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill5</Typography>
+                <TextField
+                  label="Skill5"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill5}
+                  onChange={(e) => handleChange("skill5", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill6</Typography>
+                <TextField
+                  label="Skill6"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.skill6}
+                  onChange={(e) => handleChange("skill6", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest1</Typography>
+                <TextField
+                  label="Intrest1"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest1}
+                  onChange={(e) => handleChange("interest1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest2</Typography>
+                <TextField
+                  label="Intrest2"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest2}
+                  onChange={(e) => handleChange("interest2", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest3</Typography>
+                <TextField
+                  label="Intrest3"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest3}
+                  onChange={(e) => handleChange("interest3", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest4</Typography>
+                <TextField
+                  label="Intrest4"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest4}
+                  onChange={(e) => handleChange("interest4", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest5</Typography>
+                <TextField
+                  label="Intrest5"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest5}
+                  onChange={(e) => handleChange("interest5", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Intrest6</Typography>
+                <TextField
+                  label="Intrest6"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.interest6}
+                  onChange={(e) => handleChange("interest6", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+          </CardContent>
+        </Card>
+
+
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            PROJECTS
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title1}
+                  onChange={(e) => handleChange("title1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link1}
+                  onChange={(e) => handleChange("link1", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription1}
+                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title2}
+                  onChange={(e) => handleChange("title2", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link2}
+                  onChange={(e) => handleChange("link2", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription2}
+                  onChange={(e) => handleChange("projectDescription2", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title3}
+                  onChange={(e) => handleChange("title3", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link3}
+                  onChange={(e) => handleChange("link3", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription3}
+                  onChange={(e) => handleChange("projectDescription3", e.target.value)}
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            WORK EXPERINCE
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
+                <TextField
+                  label="Company"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.institute1}
+                  onChange={(e) => handleChange("institute1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
+                <TextField
+                  label="Position"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.position1}
+                  onChange={(e) => handleChange("position1", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
+                <TextField
+                  label="Duration"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.duration1}
+                  onChange={(e) => handleChange("duration1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experince Description</Typography>
+                <TextField
+                  label="Experince Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.experienceDescription1}
+                  onChange={(e) => handleChange("experienceDescription1", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
+                <TextField
+                  label="Company"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.institute2}
+                  onChange={(e) => handleChange("institute2", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
+                <TextField
+                  label="Position"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.position2}
+                  onChange={(e) => handleChange("position2", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
+                <TextField
+                  label="Duration"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.duration2}
+                  onChange={(e) => handleChange("duration2", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experience Description</Typography>
+                <TextField
+                  label="Experince Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.experienceDescription2}
+                  onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                />
+              </div>
+            </div>
           </CardContent>
         </Card>
         {/* <Resume firstName={values.firstname}/> */}
