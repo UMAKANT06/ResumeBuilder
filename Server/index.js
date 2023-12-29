@@ -3,7 +3,7 @@ const express = require('express');
 const axios = require('axios');
 
 const app = express();
-const PORT = 3333;
+const PORT = 3334;
 const key=process.env.API_SECRET_KEY;
 
 app.use(express.json());
@@ -22,7 +22,7 @@ app.post('/ask-gpt', async (req, res) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${key} `,
+          'Authorization': `Bearer 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 `,
         },
       }
     );

@@ -3,14 +3,10 @@ import { Box, Paper, Card, CardContent, TextField, Typography, Button } from "@m
 import NavBar from "./NavBar";
 import Resume from "./Resume";
 import ProfileResume from "./ProfileResume";
+import axios from 'axios';
+import { responsiveProperty } from "@mui/material/styles/cssUtils";
 
 const Profile = () => {
-
-  const handleSubmit = () => {
-
-  };
-
-
   const [values, setValues] = useState({
     // Profile-Information
     firstname: "john",
@@ -78,6 +74,63 @@ const Profile = () => {
       [field]: value,
     }));
   };
+
+
+  const question="Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)";
+
+
+  
+  const [ExperienceDescription2, setExperienceDescription2] = useState("");
+  const [ExperienceDescription1, setExperienceDescription1] = useState("");
+  const [ProjectDescription1, setProjectDescription1] = useState("");
+  const [ProjectDescription2, setProjectDescription2] = useState("");
+
+
+
+  const askGPT1 = async (question) => {
+    try {
+      const response = await axios.post(' /ask-gpt', { question });
+      setProjectDescription1(response.data.answer);
+      console.log(response.data.answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+  const askGPT2 = async (question) => {
+    try {
+      const response = await axios.post(' /ask-gpt', { question });
+      setProjectDescription2(response.data.answer);
+      console.log(response.data.answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
+  const askGPT3 = async (question) => {
+    try {
+      const response = await axios.post(' /ask-gpt', { question });
+      setExperienceDescription1(response.data.answer);
+      console.log(response.data.answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const askGPT4 = async (question) => {
+    try {
+      const response = await axios.post(' /ask-gpt', { question });
+      setExperienceDescription2(response.data.answer);
+      console.log(response.data.answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
 
 
 
@@ -688,6 +741,19 @@ const Profile = () => {
               </div>
             </div>
 
+            <Button onClick={() => askGPT1("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")} >
+              MAGIC
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+                <TextField
+                  label="output"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={ProjectDescription1}
+                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                  onChange={(e) => setProjectDescription1(e.target.value)}
+                />
+
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
@@ -724,11 +790,21 @@ const Profile = () => {
                 />
               </div>
             </div>
+            <Button onClick={() => askGPT2("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+              MAGIC
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+                <TextField
+                  label="output"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={ProjectDescription2}
+                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                  onChange={(e) => setProjectDescription2(e.target.value)}
+                />
+
           </CardContent>
         </Card>
-
-
-
         <Box
           display="flex"
           justifyContent="center"
@@ -809,6 +885,20 @@ const Profile = () => {
               </div>
             </div>
 
+            <Button onClick={() => askGPT3("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+              MAGIC
+            </Button>
+
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+                <TextField
+                  label="output"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={ExperienceDescription1}
+                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                  onChange={(e) => setExperienceDescription1(e.target.value)}
+                />
+
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
@@ -856,6 +946,20 @@ const Profile = () => {
                 />
               </div>
             </div>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+                <TextField
+                  label="output"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={ExperienceDescription2}
+                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                  onChange={(e) => setExperienceDescription2(e.target.value)}
+                />
+      
+           
+            <Button onClick={() => askGPT4("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+              MAGIC
+            </Button>
           </CardContent>
         </Card>
         {/* <Resume firstName={values.firstname}/> */}
