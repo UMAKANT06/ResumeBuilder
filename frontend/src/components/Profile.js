@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Paper, Card, CardContent, TextField, Typography, Button } from "@mui/material";
+import { Box, Paper, Card, CardContent, TextField, Typography, Button , CircularProgress} from "@mui/material";
 import NavBar from "./NavBar";
 import Resume from "./Resume";
 import ProfileResume from "./ProfileResume";
@@ -76,15 +76,15 @@ const Profile = () => {
   };
 
 
-  const question="Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)";
+  const question = "Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)";
 
 
-   
 
-  const[Tech1,setTech1]=useState("");
-  const[Tech2,setTech2]=useState("");
-  const[Tech3,setTech3]=useState("");
-  
+
+  const [Tech1, setTech1] = useState("");
+  const [Tech2, setTech2] = useState("");
+  const [Tech3, setTech3] = useState("");
+
   const [ExperienceDescription2, setExperienceDescription2] = useState("");
   const [ExperienceDescription1, setExperienceDescription1] = useState("");
   const [ProjectDescription1, setProjectDescription1] = useState("");
@@ -92,8 +92,16 @@ const Profile = () => {
   const [ProjectDescription3, setProjectDescription3] = useState("");
 
 
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
+  const [loading4, setLoading4] = useState(false);
+  const [loading5, setLoading5] = useState(false);
 
-  const askGPT1 = async(question) => {
+
+
+  const askGPT1 = async (question) => {
+    setLoading1(true);
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setProjectDescription1(response.data.answer);
@@ -101,10 +109,14 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+    setTimeout(() => {
+      setLoading1(false);
+    }, 2000);
   };
 
 
   const askGPT2 = async (question) => {
+    setLoading2(true);
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setProjectDescription2(response.data.answer);
@@ -112,9 +124,14 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+
+    setTimeout(() => {
+      setLoading2(false);
+    }, 2000);
   };
 
   const askGPT = async (question) => {
+    setLoading3(true);
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setProjectDescription3(response.data.answer);
@@ -122,11 +139,16 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+
+    setTimeout(() => {
+      setLoading3(false);
+    }, 2000);
   };
 
 
 
   const askGPT3 = async (question) => {
+    setLoading4(true);
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setExperienceDescription1(response.data.answer);
@@ -134,9 +156,13 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+    setTimeout(() => {
+      setLoading4(false);
+    }, 2000);
   };
 
   const askGPT4 = async (question) => {
+    setLoading5(true);
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setExperienceDescription2(response.data.answer);
@@ -144,6 +170,9 @@ const Profile = () => {
     } catch (error) {
       console.error(error);
     }
+    setTimeout(() => {
+      setLoading5(false);
+    }, 2000);
   };
 
 
@@ -158,6 +187,18 @@ const Profile = () => {
         background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
         fontFamily: "'Roboto Slab', serif",
       }}>
+        <Card  style={{
+            marginTop: 0,
+            padding: "10px",
+            maxWidth: 1000,
+            // maxHeight:1400,
+            width: "100%",
+            marginLeft: -10,
+            height: 1700, // Set a fixed height for the scrollable area
+            overflowY: "auto",
+         // Allow vertical scrolling
+          }}>
+          <CardContent>
         <Box
           display="flex"
           justifyContent="center"
@@ -312,6 +353,7 @@ const Profile = () => {
 
           </CardContent>
         </Card>
+        
 
 
         <Box
@@ -469,8 +511,389 @@ const Profile = () => {
 
           </CardContent>
         </Card>
+        
 
 
+
+
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            PROJECTS
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title1}
+                  onChange={(e) => handleChange("title1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link1}
+                  onChange={(e) => handleChange("link1", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription1}
+                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
+                />
+              </div>
+
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech1}
+                  onChange={(e) => setTech1(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <Button onClick={() => askGPT1(`Can you provide a concise description of my project named ${values.title1} using ${Tech1} for my resume? Highlight key achievements and skills in about 30 words.`)} >
+            {loading1 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <TextField
+              label="output"
+              variant="outlined"
+              style={{ width: 800 }}
+              multiline
+              rows={4}
+              value={ProjectDescription1}
+              // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+              onChange={(e) => setProjectDescription1(e.target.value)}
+            />
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title2}
+                  onChange={(e) => handleChange("title2", e.target.value)}
+                />
+              </div>
+
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link2}
+                  onChange={(e) => handleChange("link2", e.target.value)}
+                />
+              </div>
+
+
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription1}
+                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
+                />
+              </div>
+
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech2}
+                  onChange={(e) => setTech2(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <Button onClick={() => askGPT2(`Can you provide a concise description of my project named ${values.title2} using ${Tech2} for my resume? Highlight key achievements and skills in about 30 words.`)} >
+            {loading2 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <TextField
+              label="output"
+              variant="outlined"
+              style={{ width: 800 }}
+              multiline
+              rows={4}
+              value={ProjectDescription2}
+              // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+              onChange={(e) => setProjectDescription2(e.target.value)}
+            />
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.title3}
+                  onChange={(e) => handleChange("title3", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
+                <TextField
+                  label="Link"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.link3}
+                  onChange={(e) => handleChange("link3", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <TextField
+                  label="Project Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.projectDescription3}
+                  onChange={(e) => handleChange("projectDescription3", e.target.value)}
+                />
+              </div>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech3}
+                  onChange={(e) => setTech3(e.target.value)}
+                />
+              </div>
+            </div>
+            <Button onClick={() => askGPT(`Can you provide a concise description of my project named ${values.title3} using ${Tech3} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading3 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <TextField
+              label="output"
+              variant="outlined"
+              style={{ width: 800 }}
+              multiline
+              rows={4}
+              value={ProjectDescription3}
+              // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+              onChange={(e) => setProjectDescription3(e.target.value)}
+            />
+
+          </CardContent>
+        </Card>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="15vh"
+        >
+          <Paper
+            style={{
+              backgroundColor: '#4C667E',
+              color: "white",
+              padding: "10px",
+              maxWidth: 900,
+              width: "100%",
+              marginLeft: -900,
+              fontSize: 20
+            }}
+          >
+            WORK EXPERINCE
+          </Paper>
+        </Box>
+
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+          <CardContent>
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
+                <TextField
+                  label="Company"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.institute1}
+                  onChange={(e) => handleChange("institute1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
+                <TextField
+                  label="Position"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.position1}
+                  onChange={(e) => handleChange("position1", e.target.value)}
+                />
+              </div>
+            </div>
+
+
+
+
+
+
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
+                <TextField
+                  label="Duration"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.duration1}
+                  onChange={(e) => handleChange("duration1", e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experince Description</Typography>
+                <TextField
+                  label="Experince Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.experienceDescription1}
+                  onChange={(e) => handleChange("experienceDescription1", e.target.value)}
+                />
+              </div>
+            </div>
+
+            <Button onClick={() => askGPT3(`Can you provide a concise description of my ${values.duration1} experience as a ${values.position1} at ${values.institute1} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading4 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
+
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <TextField
+              label="output"
+              variant="outlined"
+              style={{ width: 800 }}
+              multiline
+              rows={4}
+              value={ExperienceDescription1}
+              // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+              onChange={(e) => setExperienceDescription1(e.target.value)}
+            />
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
+                <TextField
+                  label="Company"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.institute2}
+                  onChange={(e) => handleChange("institute2", e.target.value)}
+                />
+              </div>
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
+                <TextField
+                  label="Position"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.position2}
+                  onChange={(e) => handleChange("position2", e.target.value)}
+                />
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
+                <TextField
+                  label="Duration"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.duration2}
+                  onChange={(e) => handleChange("duration2", e.target.value)}
+                />
+              </div>
+              <div>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experience Description</Typography>
+                <TextField
+                  label="Experince Description"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={values.experienceDescription2}
+                  onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                />
+              </div>
+            </div>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <TextField
+              label="output"
+              variant="outlined"
+              style={{ width: 800 }}
+              multiline
+              rows={4}
+              value={ExperienceDescription2}
+              // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+              onChange={(e) => setExperienceDescription2(e.target.value)}
+            />
+            <Button onClick={() => askGPT4(`Can you provide a concise description of my ${values.duration2} experience as a ${values.position2} at ${values.institute2} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading5 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
+          </CardContent>
+        </Card>
         <Box
           display="flex"
           justifyContent="center"
@@ -650,383 +1073,10 @@ const Profile = () => {
 
           </CardContent>
         </Card>
-
-
-
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="15vh"
-        >
-          <Paper
-            style={{
-              backgroundColor: '#4C667E',
-              color: "white",
-              padding: "10px",
-              maxWidth: 900,
-              width: "100%",
-              marginLeft: -900,
-              fontSize: 20
-            }}
-          >
-            PROJECTS
-          </Paper>
-        </Box>
-
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
-          <CardContent>
-
-
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
-                <TextField
-                  label="Title"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.title1}
-                  onChange={(e) => handleChange("title1", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
-                <TextField
-                  label="Link"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.link1}
-                  onChange={(e) => handleChange("link1", e.target.value)}
-                />
-              </div>
-            </div>
-
-
-
-
-
-
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
-                <TextField
-                  label="Project Description"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.projectDescription1}
-                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
-                />
-              </div>
-
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
-                <TextField
-                  label="Technologies used"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={Tech1}
-                  onChange={(e) => setTech1(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <Button onClick={() => askGPT1(`Can you provide a concise description of my project named ${values.title1} using ${Tech1} for my resume? Highlight key achievements and skills in about 30 words.`)} >
-              MAGIC
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
-                <TextField
-                  label="output"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={ProjectDescription1}
-                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setProjectDescription1(e.target.value)}
-                />
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-            <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
-                <TextField
-                  label="Title"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.title2}
-                  onChange={(e) => handleChange("title2", e.target.value)}
-                />
-              </div>
-
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
-                <TextField
-                  label="Link"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.link2}
-                  onChange={(e) => handleChange("link2", e.target.value)}
-                />
-              </div>
-
-             
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
-                <TextField
-                  label="Project Description"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.projectDescription1}
-                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
-                />
-              </div>
-
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
-                <TextField
-                  label="Technologies used"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={Tech2}
-                  onChange={(e) => setTech2(e.target.value)}
-                />
-              </div>
-            </div>
-
-            <Button onClick={() => askGPT2(`Can you provide a concise description of my project named ${values.title2} using ${Tech2} for my resume? Highlight key achievements and skills in about 30 words.`)} >
-              MAGIC
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
-                <TextField
-                  label="output"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={ProjectDescription2}
-                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setProjectDescription2(e.target.value)}
-                />
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
-                <TextField
-                  label="Title"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.title3}
-                  onChange={(e) => handleChange("title3", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
-                <TextField
-                  label="Link"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.link3}
-                  onChange={(e) => handleChange("link3", e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
-                <TextField
-                  label="Project Description"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.projectDescription3}
-                  onChange={(e) => handleChange("projectDescription3", e.target.value)}
-                />
-              </div>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
-                <TextField
-                  label="Technologies used"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={Tech3}
-                  onChange={(e) => setTech3(e.target.value)}
-                />
-              </div>
-            </div>
-            <Button onClick={() => askGPT(`Can you provide a concise description of my project named ${values.title3} using ${Tech3} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-              MAGIC
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
-                <TextField
-                  label="output"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={ProjectDescription3}
-                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setProjectDescription3(e.target.value)}
-                />
-
-          </CardContent>
+        </CardContent>
         </Card>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="15vh"
-        >
-          <Paper
-            style={{
-              backgroundColor: '#4C667E',
-              color: "white",
-              padding: "10px",
-              maxWidth: 900,
-              width: "100%",
-              marginLeft: -900,
-              fontSize: 20
-            }}
-          >
-            WORK EXPERINCE
-          </Paper>
-        </Box>
-
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
-          <CardContent>
 
 
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
-                <TextField
-                  label="Company"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.institute1}
-                  onChange={(e) => handleChange("institute1", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
-                <TextField
-                  label="Position"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.position1}
-                  onChange={(e) => handleChange("position1", e.target.value)}
-                />
-              </div>
-            </div>
-
-
-
-
-
-
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
-                <TextField
-                  label="Duration"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.duration1}
-                  onChange={(e) => handleChange("duration1", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experince Description</Typography>
-                <TextField
-                  label="Experince Description"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.experienceDescription1}
-                  onChange={(e) => handleChange("experienceDescription1", e.target.value)}
-                />
-              </div>
-            </div>
-
-            <Button onClick={() => askGPT3(`Can you provide a concise description of my ${values.duration1} experience as a ${values.position1} at ${values.institute1} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-              MAGIC
-            </Button>
-
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
-                <TextField
-                  label="output"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={ExperienceDescription1}
-                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setExperienceDescription1(e.target.value)}
-                />
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
-                <TextField
-                  label="Company"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.institute2}
-                  onChange={(e) => handleChange("institute2", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Position</Typography>
-                <TextField
-                  label="Position"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.position2}
-                  onChange={(e) => handleChange("position2", e.target.value)}
-                />
-              </div>
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
-              <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Duration</Typography>
-                <TextField
-                  label="Duration"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.duration2}
-                  onChange={(e) => handleChange("duration2", e.target.value)}
-                />
-              </div>
-
-              <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experience Description</Typography>
-                <TextField
-                  label="Experince Description"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={values.experienceDescription2}
-                  onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                />
-              </div>
-            </div>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
-                <TextField
-                  label="output"
-                  variant="outlined"
-                  style={{ width: 400 }}
-                  value={ExperienceDescription2}
-                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setExperienceDescription2(e.target.value)}
-                />
-      
-           
-            <Button onClick={() => askGPT4(`Can you provide a concise description of my ${values.duration2} experience as a ${values.position2} at ${values.institute2} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-              MAGIC
-            </Button>
-          </CardContent>
-        </Card>
         {/* <Resume firstName={values.firstname}/> */}
         <ProfileResume values={values} />
       </div>

@@ -1,7 +1,60 @@
-import React from "react";
+import React,{useState} from "react";
+// import html2pdf from  "html2pdf.js";
+import { saveAs } from 'file-saver';
+import { jsPDF } from "jspdf";
+import html2canvas from 'html2canvas';
 
-
+import axios from "axios";
 const ProfileResume = ({ values }) => {
+
+
+  // const downloadResume = () => {
+  //   const input = document.getElementById('resume-container');
+  //   html2canvas(input)
+  // .then((canvas) => {
+  //   const imgData = canvas.toDataURL('image/png');
+  //   const pdf = new jsPDF();
+  //   const imgProps = pdf.getImageProperties(imgData);
+  //   const pdfWidth = pdf.internal.pageSize.getWidth();
+  //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+  //   const desiredHeight = pdfHeight * 0.8;
+  //   const desiredWidth = pdfWidth * 1.1;
+  //   pdf.addImage(imgData, 'PNG', -10, 0, desiredWidth, desiredHeight);
+  //   pdf.save("download.pdf");  
+  // });
+  // }
+
+
+  // const downloadResume = async () => {
+  //   const input = document.getElementById('resume-container');
+  //   const htmlTemplate = input.innerHTML;
+  
+  //   const response = await fetch('/create-pdf', {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({ htmlTemplate })
+  //   });
+  
+  //   if (!response.ok) {
+  //     throw new Error('Network response was not ok');
+  //   }
+  
+  //   const blob = await response.blob();
+  //   const url = window.URL.createObjectURL(blob);
+  //   const link = document.createElement('a');
+  //   link.href = url;
+  //   link.setAttribute('download', 'Resume.pdf');
+  //   document.body.appendChild(link);
+  //   link.click();
+  //   link.remove();
+  // };
+
+
+ 
+
+  // const [htmlTemplate, setHtmlTemplate] = useState("");
     const {
       // Profile-Information
       firstname,
@@ -62,6 +115,25 @@ const ProfileResume = ({ values }) => {
       interest5,
       interest6,
     } = values;
+    const downloadResume = async () => {
+      const input = document.getElementById('resume-container');
+      const htmlTemplate = input.innerHTML;
+    
+      try {
+        // Step 1: Send HTML content to the server for PDF generation
+        const response = await axios.post('/create-pdf', { htmlTemplate }, { responseType: 'blob' });
+    
+        // Step 2: Create a Blob from the response data
+        const pdfBlob = new Blob([response.data], { type: 'application/pdf' });
+    
+        // Step 3: Save the Blob as a PDF file
+        saveAs(pdfBlob, `${values.firstname}'s Resume.pdf`);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    
   let htmlTemplate =   `
   <!DOCTYPE html>
     <html>
@@ -448,7 +520,8 @@ const ProfileResume = ({ values }) => {
     return (
       <div>
         {/* Render your static HTML content */}
-        <div dangerouslySetInnerHTML={{ __html: htmlTemplate }} style={{marginLeft:1000,marginTop:-740}} />
+        <div  id="resume-container" dangerouslySetInnerHTML={{ __html: htmlTemplate }} style={{marginLeft:1000,marginTop:-1730}}/>
+        <button onClick={downloadResume} style={{marginLeft:1100 ,marginTop:-30}}>Download Resume</button>
       </div>
     );
   };

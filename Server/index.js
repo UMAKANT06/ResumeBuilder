@@ -5,8 +5,37 @@ const axios = require('axios');
 const app = express();
 const PORT = 3334;
 const key=process.env.API_SECRET_KEY;
+const puppeteer = require('puppeteer');
 
 app.use(express.json());
+
+const pdf = require("html-pdf");
+
+const options = {
+  height: "160cm",
+  width: "35.7cm",
+  timeout: "6000",
+  childProcessOptions: {
+    env: {
+      OPENSSL_CONF: '/dev/null',
+    },
+  }
+};
+
+
+
+
+app.post('/create-pdf', async (req, res) => {
+  pdf.create(req.body.htmlTemplate, options).toStream((err, stream) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+    } else {
+      res.setHeader('Content-Type', 'application/pdf');
+      stream.pipe(res);
+    }
+  });
+});
 
 app.post('/ask-gpt', async (req, res) => {
   try {
@@ -24,7 +53,7 @@ app.post('/ask-gpt', async (req, res) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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 `,
+          'Authorization': `Bearer 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 `,
         },
       }
     );
