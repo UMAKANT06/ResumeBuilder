@@ -18,3 +18,4 @@ and then in both to run the web app
 "npm start"
 
 
+In case if API_KEY is not working means on server side it showing invalid key please use your own api key in index.js file which will get from "https://platform.openai.com"
