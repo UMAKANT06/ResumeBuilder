@@ -12,24 +12,24 @@ app.post('/ask-gpt', async (req, res) => {
   try {
     const { question } = req.body;
     console.log("Before Axios Request");
-    // Call the OpenAI API
     const response = await axios.post(
-      'https://api.openai.com/v1/engines/davinci/completions',
+      // 'https://api.openai.com/v1/engines/davinci/completions',
+      'https://api.openai.com/v1/engines/text-davinci-002/completions',
       {
+        // model: "gpt-3.5-turbo",
         prompt: question,
         max_tokens: 150,
+        // temperature: 0.7
       },
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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 `,
+          'Authorization': `Bearer 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 `,
         },
       }
     );
 
     const answer = response.data.choices[0].text.trim();
-    
-    // Send the answer back to the client
     res.json({ answer });
   } catch (error) {
     console.error(error);
@@ -38,7 +38,6 @@ app.post('/ask-gpt', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

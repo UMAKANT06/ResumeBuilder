@@ -79,15 +79,21 @@ const Profile = () => {
   const question="Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)";
 
 
+   
+
+  const[Tech1,setTech1]=useState("");
+  const[Tech2,setTech2]=useState("");
+  const[Tech3,setTech3]=useState("");
   
   const [ExperienceDescription2, setExperienceDescription2] = useState("");
   const [ExperienceDescription1, setExperienceDescription1] = useState("");
   const [ProjectDescription1, setProjectDescription1] = useState("");
   const [ProjectDescription2, setProjectDescription2] = useState("");
+  const [ProjectDescription3, setProjectDescription3] = useState("");
 
 
 
-  const askGPT1 = async (question) => {
+  const askGPT1 = async(question) => {
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setProjectDescription1(response.data.answer);
@@ -102,6 +108,16 @@ const Profile = () => {
     try {
       const response = await axios.post(' /ask-gpt', { question });
       setProjectDescription2(response.data.answer);
+      console.log(response.data.answer);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const askGPT = async (question) => {
+    try {
+      const response = await axios.post(' /ask-gpt', { question });
+      setProjectDescription3(response.data.answer);
       console.log(response.data.answer);
     } catch (error) {
       console.error(error);
@@ -705,7 +721,33 @@ const Profile = () => {
                 />
               </div>
 
-              <div>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech1}
+                  onChange={(e) => setTech1(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <Button onClick={() => askGPT1(`Can you provide a concise description of my project named ${values.title1} using ${Tech1} for my resume? Highlight key achievements and skills in about 30 words.`)} >
+              MAGIC
+            </Button>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+                <TextField
+                  label="output"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={ProjectDescription1}
+                  // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
+                  onChange={(e) => setProjectDescription1(e.target.value)}
+                />
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+            <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
                 <TextField
                   label="Title"
@@ -715,9 +757,7 @@ const Profile = () => {
                   onChange={(e) => handleChange("title2", e.target.value)}
                 />
               </div>
-            </div>
 
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Link</Typography>
                 <TextField
@@ -729,19 +769,34 @@ const Profile = () => {
                 />
               </div>
 
-              <div>
+             
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+              <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
                 <TextField
                   label="Project Description"
                   variant="outlined"
                   style={{ width: 400 }}
-                  value={values.projectDescription2}
-                  onChange={(e) => handleChange("projectDescription2", e.target.value)}
+                  value={values.projectDescription1}
+                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
+                />
+              </div>
+
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech2}
+                  onChange={(e) => setTech2(e.target.value)}
                 />
               </div>
             </div>
 
-            <Button onClick={() => askGPT1("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")} >
+            <Button onClick={() => askGPT2(`Can you provide a concise description of my project named ${values.title2} using ${Tech2} for my resume? Highlight key achievements and skills in about 30 words.`)} >
               MAGIC
             </Button>
             <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
@@ -749,9 +804,9 @@ const Profile = () => {
                   label="output"
                   variant="outlined"
                   style={{ width: 400 }}
-                  value={ProjectDescription1}
+                  value={ProjectDescription2}
                   // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setProjectDescription1(e.target.value)}
+                  onChange={(e) => setProjectDescription2(e.target.value)}
                 />
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
@@ -789,8 +844,18 @@ const Profile = () => {
                   onChange={(e) => handleChange("projectDescription3", e.target.value)}
                 />
               </div>
+              <div style={{ marginRight: "10px" }}>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <TextField
+                  label="Technologies used"
+                  variant="outlined"
+                  style={{ width: 400 }}
+                  value={Tech3}
+                  onChange={(e) => setTech3(e.target.value)}
+                />
+              </div>
             </div>
-            <Button onClick={() => askGPT2("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+            <Button onClick={() => askGPT(`Can you provide a concise description of my project named ${values.title3} using ${Tech3} for my resume? Highlight key achievements and skills in about 30 words.`)}>
               MAGIC
             </Button>
             <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
@@ -798,9 +863,9 @@ const Profile = () => {
                   label="output"
                   variant="outlined"
                   style={{ width: 400 }}
-                  value={ProjectDescription2}
+                  value={ProjectDescription3}
                   // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
-                  onChange={(e) => setProjectDescription2(e.target.value)}
+                  onChange={(e) => setProjectDescription3(e.target.value)}
                 />
 
           </CardContent>
@@ -885,7 +950,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <Button onClick={() => askGPT3("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+            <Button onClick={() => askGPT3(`Can you provide a concise description of my ${values.duration1} experience as a ${values.position1} at ${values.institute1} for my resume? Highlight key achievements and skills in about 30 words.`)}>
               MAGIC
             </Button>
 
@@ -957,7 +1022,7 @@ const Profile = () => {
                 />
       
            
-            <Button onClick={() => askGPT4("Provide a brief description of my experience working at Google as a software engineer for 3 years for my resume (30 words)")}>
+            <Button onClick={() => askGPT4(`Can you provide a concise description of my ${values.duration2} experience as a ${values.position2} at ${values.institute2} for my resume? Highlight key achievements and skills in about 30 words.`)}>
               MAGIC
             </Button>
           </CardContent>
