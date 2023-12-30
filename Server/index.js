@@ -53,7 +53,7 @@ app.post('/ask-gpt', async (req, res) => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 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 `,
+          'Authorization': `Bearer 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`,
         },
       }
     );

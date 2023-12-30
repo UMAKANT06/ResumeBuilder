@@ -3,57 +3,21 @@ import React,{useState} from "react";
 import { saveAs } from 'file-saver';
 import { jsPDF } from "jspdf";
 import html2canvas from 'html2canvas';
-
+import { motion, useAnimation } from 'framer-motion';
 import axios from "axios";
 const ProfileResume = ({ values }) => {
-
-
-  // const downloadResume = () => {
-  //   const input = document.getElementById('resume-container');
-  //   html2canvas(input)
-  // .then((canvas) => {
-  //   const imgData = canvas.toDataURL('image/png');
-  //   const pdf = new jsPDF();
-  //   const imgProps = pdf.getImageProperties(imgData);
-  //   const pdfWidth = pdf.internal.pageSize.getWidth();
-  //   const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  //   const desiredHeight = pdfHeight * 0.8;
-  //   const desiredWidth = pdfWidth * 1.1;
-  //   pdf.addImage(imgData, 'PNG', -10, 0, desiredWidth, desiredHeight);
-  //   pdf.save("download.pdf");  
-  // });
-  // }
-
-
-  // const downloadResume = async () => {
-  //   const input = document.getElementById('resume-container');
-  //   const htmlTemplate = input.innerHTML;
-  
-  //   const response = await fetch('/create-pdf', {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({ htmlTemplate })
-  //   });
-  
-  //   if (!response.ok) {
-  //     throw new Error('Network response was not ok');
-  //   }
-  
-  //   const blob = await response.blob();
-  //   const url = window.URL.createObjectURL(blob);
-  //   const link = document.createElement('a');
-  //   link.href = url;
-  //   link.setAttribute('download', 'Resume.pdf');
-  //   document.body.appendChild(link);
-  //   link.click();
-  //   link.remove();
-  // };
-
-
- 
-
+  const controls = useAnimation();
+  const animationEffectsHoverEnter = { scale: 1.05 };
+  const animationEffectsHoverLeave = { scale: 1 };
+  const animationEffectsFirstLoad = {
+      scale: [0.9, 1],
+      opacity: [0, 1],
+  };
+  const transtionEffects = {
+      type: 'spring',
+      stiffness: 400,
+      damping: 17,
+  };
   // const [htmlTemplate, setHtmlTemplate] = useState("");
     const {
       // Profile-Information
@@ -133,7 +97,7 @@ const ProfileResume = ({ values }) => {
       }
     };
 
-    
+
   let htmlTemplate =   `
   <!DOCTYPE html>
     <html>
@@ -520,8 +484,8 @@ const ProfileResume = ({ values }) => {
     return (
       <div>
         {/* Render your static HTML content */}
-        <div  id="resume-container" dangerouslySetInnerHTML={{ __html: htmlTemplate }} style={{marginLeft:1000,marginTop:-1730}}/>
-        <button onClick={downloadResume} style={{marginLeft:1100 ,marginTop:-30}}>Download Resume</button>
+        <div  id="resume-container" dangerouslySetInnerHTML={{ __html: htmlTemplate }} style={{marginLeft:1000,marginTop:-2050}}/>
+        <button onClick={downloadResume} style={{marginLeft:1100 ,marginTop:-30,backgroundColor:'#4C667E', color:'white'}}>Download Resume</button>
       </div>
     );
   };

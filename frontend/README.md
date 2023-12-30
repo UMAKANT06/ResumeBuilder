@@ -2,6 +2,20 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## cloning the repo 
+
+using `git clone https://github.com/UMAKANT06/ResumeBuilder`
+
+after that go to particular directory
+
+## how to install packages
+
+using `npm install`
+
+from client and server both 
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:

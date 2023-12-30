@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Button, Divider, Paper } from "@mui/material";
+import { Box, Button, CardContent, Divider, Paper, Card ,CardPinnnedIcon} from "@mui/material";
 import NavBar from './NavBar';
 import Picture from '../Static/bgg.jpg'
 import { motion, useAnimation } from 'framer-motion';
@@ -18,11 +18,16 @@ const Home = () => {
         stiffness: 400,
         damping: 17,
     };
-    const navigate=useNavigate();
+
+
+
+
+
+    const navigate = useNavigate();
     return (
         <div>
             <NavBar></NavBar>
-          
+
             <div
                 style={{
                     background: 'linear-gradient(180deg, #E7EEFA 50%, #FFFFFF 100%)',
@@ -36,7 +41,7 @@ const Home = () => {
                         animate={animationEffectsFirstLoad}
                         transition={transtionEffects}
                     >
-           
+
                         <motion.img src={Picture} className="w-6/12 sm:w-9/12"
                             onMouseEnter={() => {
                                 controls.start(animationEffectsHoverEnter, transtionEffects);
@@ -58,17 +63,19 @@ const Home = () => {
                                 </p>
                             </div>
 
-                            <Button  onClick={() => navigate('/Profile')} variant="contained" className="bg-resume-800 mb-2" style={{ fontSize: 19, marginLeft: 835, marginTop: 60, color: 'white', borderRadius: 5, alignContent: 'center' }}>
+                            <Button onClick={() => navigate('/Profile')} variant="contained" className="bg-resume-800 mb-2" style={{ fontSize: 19, marginLeft: 835, marginTop: 60, color: 'white', borderRadius: 5, alignContent: 'center' }}>
                                 BUILD YOUR RESUME
                             </Button>
+
+                            
 
 
                         </div>
                     </motion.div>
                 </div>
             </div>
-            
-            
+
+
         </div>
     )
 }

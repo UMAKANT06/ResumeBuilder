@@ -194,7 +194,7 @@ const Profile = () => {
             // maxHeight:1400,
             width: "100%",
             marginLeft: -10,
-            height: 1700, // Set a fixed height for the scrollable area
+            height: 2000, // Set a fixed height for the scrollable area
             overflowY: "auto",
          // Allow vertical scrolling
           }}>
@@ -212,14 +212,14 @@ const Profile = () => {
               padding: "10px",
               maxWidth: 900,
               width: "100%",
-              marginLeft: -900,
+              marginLeft: 10,
               fontSize: 20
             }}
           >
             PERSONAL DETAILS
           </Paper>
         </Box>
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 30 }}>
           <CardContent>
 
 
@@ -369,7 +369,7 @@ const Profile = () => {
               padding: "10px",
               maxWidth: 900,
               width: "100%",
-              marginLeft: -900,
+              marginLeft: 10,
               fontSize: 20
             }}
           >
@@ -377,7 +377,7 @@ const Profile = () => {
           </Paper>
         </Box>
 
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 30 }}>
           <CardContent>
 
 
@@ -529,7 +529,7 @@ const Profile = () => {
               padding: "10px",
               maxWidth: 900,
               width: "100%",
-              marginLeft: -900,
+              marginLeft: 10,
               fontSize: 20
             }}
           >
@@ -537,7 +537,7 @@ const Profile = () => {
           </Paper>
         </Box>
 
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 30 }}>
           <CardContent>
 
 
@@ -574,7 +574,7 @@ const Profile = () => {
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Project Description</Typography>
                 <TextField
                   label="Project Description"
                   variant="outlined"
@@ -585,7 +585,7 @@ const Profile = () => {
               </div>
 
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Technologies Used</Typography>
                 <TextField
                   label="Technologies used"
                   variant="outlined"
@@ -596,10 +596,8 @@ const Profile = () => {
               </div>
             </div>
 
-            <Button onClick={() => askGPT1(`Can you provide a concise description of my project named ${values.title1} using ${Tech1} for my resume? Highlight key achievements and skills in about 30 words.`)} >
-            {loading1 ? <CircularProgress size={24} /> : 'MAGIC'}
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -30 }}>AI Description</Typography>
             <TextField
               label="output"
               variant="outlined"
@@ -610,8 +608,11 @@ const Profile = () => {
               // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
               onChange={(e) => setProjectDescription1(e.target.value)}
             />
+            <Button  style={{backgroundColor:'#4C667E' ,marginTop:10,color: 'white' ,marginLeft:-15}} onClick={() => askGPT1(`Can you provide a concise description of my project named ${values.title1} using ${Tech1} for my resume? Highlight key achievements and skills in about 30 words.`)} >
+            {loading1 ? <CircularProgress size={24} style={{color:'white'}} /> : 'MAGIC'}
+            </Button>
 
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" ,marginTop:20}}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
                 <TextField
@@ -639,18 +640,18 @@ const Profile = () => {
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Project Description</Typography>
                 <TextField
                   label="Project Description"
                   variant="outlined"
                   style={{ width: 400 }}
-                  value={values.projectDescription1}
-                  onChange={(e) => handleChange("projectDescription1", e.target.value)}
+                  value={values.projectDescription2}
+                  onChange={(e) => handleChange("projectDescription2", e.target.value)}
                 />
               </div>
 
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Technologies Used</Typography>
                 <TextField
                   label="Technologies used"
                   variant="outlined"
@@ -661,10 +662,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <Button onClick={() => askGPT2(`Can you provide a concise description of my project named ${values.title2} using ${Tech2} for my resume? Highlight key achievements and skills in about 30 words.`)} >
-            {loading2 ? <CircularProgress size={24} /> : 'MAGIC'}
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -30 }}>AI Description</Typography>
             <TextField
               label="output"
               variant="outlined"
@@ -675,8 +673,11 @@ const Profile = () => {
               // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
               onChange={(e) => setProjectDescription2(e.target.value)}
             />
+            <Button style={{backgroundColor:'#4C667E' ,marginTop:10,color: 'white',marginLeft:-15}} onClick={() => askGPT2(`Can you provide a concise description of my project named ${values.title2} using ${Tech2} for my resume? Highlight key achievements and skills in about 30 words.`)} >
+            {loading2 ? <CircularProgress size={24} style={{color:'white'}} /> : 'MAGIC'}
+            </Button>
 
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px",marginTop:20 }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Title</Typography>
                 <TextField
@@ -702,7 +703,7 @@ const Profile = () => {
 
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Project Description</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Project Description</Typography>
                 <TextField
                   label="Project Description"
                   variant="outlined"
@@ -712,7 +713,7 @@ const Profile = () => {
                 />
               </div>
               <div style={{ marginRight: "10px" }}>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Technologies Used</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Technologies Used</Typography>
                 <TextField
                   label="Technologies used"
                   variant="outlined"
@@ -722,10 +723,7 @@ const Profile = () => {
                 />
               </div>
             </div>
-            <Button onClick={() => askGPT(`Can you provide a concise description of my project named ${values.title3} using ${Tech3} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-            {loading3 ? <CircularProgress size={24} /> : 'MAGIC'}
-            </Button>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -30 }}>AI Description</Typography>
             <TextField
               label="output"
               variant="outlined"
@@ -736,6 +734,9 @@ const Profile = () => {
               // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
               onChange={(e) => setProjectDescription3(e.target.value)}
             />
+            <Button style={{backgroundColor:'#4C667E',marginTop:10,color: 'white',marginLeft:-15}} onClick={() => askGPT(`Can you provide a concise description of my project named ${values.title3} using ${Tech3} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading3 ? <CircularProgress size={24} /> : 'MAGIC'}
+            </Button>
 
           </CardContent>
         </Card>
@@ -752,7 +753,7 @@ const Profile = () => {
               padding: "10px",
               maxWidth: 900,
               width: "100%",
-              marginLeft: -900,
+              marginLeft: 10,
               fontSize: 20
             }}
           >
@@ -760,7 +761,7 @@ const Profile = () => {
           </Paper>
         </Box>
 
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 30 }}>
           <CardContent>
 
 
@@ -808,7 +809,7 @@ const Profile = () => {
               </div>
 
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experince Description</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Experince Description</Typography>
                 <TextField
                   label="Experince Description"
                   variant="outlined"
@@ -819,11 +820,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <Button onClick={() => askGPT3(`Can you provide a concise description of my ${values.duration1} experience as a ${values.position1} at ${values.institute1} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-            {loading4 ? <CircularProgress size={24} /> : 'MAGIC'}
-            </Button>
-
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -30 }}>AI Description</Typography>
             <TextField
               label="output"
               variant="outlined"
@@ -834,7 +831,11 @@ const Profile = () => {
               // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
               onChange={(e) => setExperienceDescription1(e.target.value)}
             />
-            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
+            <Button style={{backgroundColor:'#4C667E' ,marginTop:10,color: 'white',marginLeft:-15}} onClick={() => askGPT3(`Can you provide a concise description of my ${values.duration1} experience as a ${values.position1} at ${values.institute1} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading4 ? <CircularProgress size={24}  style={{color:'white'}}/> : 'MAGIC'}
+            </Button>
+
+            <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px",marginTop:20 }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Company</Typography>
                 <TextField
@@ -868,7 +869,7 @@ const Profile = () => {
                 />
               </div>
               <div>
-                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Experience Description</Typography>
+                <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -200 }}>Experience Description</Typography>
                 <TextField
                   label="Experince Description"
                   variant="outlined"
@@ -878,7 +879,7 @@ const Profile = () => {
                 />
               </div>
             </div>
-            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Output</Typography>
+            <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -30 }}>AI Description</Typography>
             <TextField
               label="output"
               variant="outlined"
@@ -889,8 +890,8 @@ const Profile = () => {
               // onChange={(e) => handleChange("experienceDescription2", e.target.value)}
               onChange={(e) => setExperienceDescription2(e.target.value)}
             />
-            <Button onClick={() => askGPT4(`Can you provide a concise description of my ${values.duration2} experience as a ${values.position2} at ${values.institute2} for my resume? Highlight key achievements and skills in about 30 words.`)}>
-            {loading5 ? <CircularProgress size={24} /> : 'MAGIC'}
+            <Button  style={{backgroundColor: '#4C667E',marginTop:10,color: 'white',marginLeft:-15}} onClick={() => askGPT4(`Can you provide a concise description of my ${values.duration2} experience as a ${values.position2} at ${values.institute2} for my resume? Highlight key achievements and skills in about 30 words.`)}>
+            {loading5 ? <CircularProgress size={24} style={{color:'white'}} /> : 'MAGIC'}
             </Button>
           </CardContent>
         </Card>
@@ -907,7 +908,7 @@ const Profile = () => {
               padding: "10px",
               maxWidth: 900,
               width: "100%",
-              marginLeft: -900,
+              marginLeft: 10,
               fontSize: 20
             }}
           >
@@ -915,7 +916,7 @@ const Profile = () => {
           </Paper>
         </Box>
 
-        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 60 }}>
+        <Card style={{ marginTop: -20, padding: "10px", maxWidth: 900, width: "100%", marginLeft: 30 }}>
           <CardContent>
 
 
@@ -943,13 +944,6 @@ const Profile = () => {
                 />
               </div>
             </div>
-
-
-
-
-
-
-
             <div style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}>
               <div style={{ marginRight: "10px" }}>
                 <Typography variant="h6" style={{ marginBottom: "10px", marginLeft: -300 }}>Skill3</Typography>

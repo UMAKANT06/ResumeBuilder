@@ -16,7 +16,7 @@ const NavBar = () => {
         damping: 17,
     };
     return (
-        <nav style={{ backgroundColor: "#5d52d9", color: "white", flex: 1, boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.7)" }}>
+        <nav style={{ backgroundColor: "#4C667E", color: "white", flex: 1, boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.7)" }}>
             <div className="navbar-container">
                 <ul className="nav-list" style={{ listStyleType: "none", margin: 0, padding: 10 }}>
                     <li style={{ display: "inline", margin: "0 90px" }}>
